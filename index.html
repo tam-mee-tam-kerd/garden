@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://tam-mee-tam-koet.pages.dev/ -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAM-MEE-TAM-GERD | Life as it is</title>
+    <link href="./css/css2" rel="stylesheet">
+    <style>
+        :root {
+            --primary-yellow: #98FB98; 
+            --accent-green: #32CD32;
+            --dark-green: #1a5c1a;
+            --soft-white: #f9fbf9;
+            --text-black: #222;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans JP', 'Prompt', sans-serif;
+            background-color: var(--soft-white);
+            color: var(--text-black);
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark-green);
+            text-decoration: none;
+        }
+
+        /* --- Hero Section --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            /* 背景画像の設定 */
+            background-image: url('img/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        /* 文字を読みやすくするためのオーバーレイ */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0); 
+            z-index: 1;
+        }
+
+        header * {
+            position: relative;
+            z-index: 2; /* テキストをオーバーレイより上に配置 */
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* 文字の視認性を高める */
+        }
+
+        .thai-title {
+            font-size: 5rem;
+            color: var(--accent-green); /* ロゴの色に合わせて黄色に */
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .sub-title {
+            font-size: 1.5rem;
+            letter-spacing: 0.3rem;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            border-left: 8px solid var(--accent-green);
+            padding-left: 20px;
+            margin-bottom: 50px;
+        }
+
+/* --- About Section Styling --- */
+        #about {
+            background-color: #ffffff;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .about-tag {
+            color: var(--accent-green);
+            font-weight: 700;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .about-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--text-black);
+            font-weight: 700;
+        }
+
+        .about-text p {
+            line-height: 2.2;
+            color: #444;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* お寺のイメージに合う装飾ライン */
+        .about-decoration {
+            margin: 50px auto 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-yellow);
+            position: relative;
+        }
+
+        .about-decoration::before, .about-decoration::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-yellow);
+            top: -4px;
+        }
+        .about-decoration::before { left: -20px; }
+        .about-decoration::after { right: -20px; }
+
+        /* Experienceセクションの余白調整（Aboutが入ったため） */
+        #services {
+            background-color: var(--soft-white);
+        }
+        
+        /* --- Content Cards --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fcf8ee;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-content h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: var(--dark-green);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: var(--dark-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            background: var(--dark-green);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .thai-title { font-size: 3rem; }
+            section { padding: 50px 20px; }
+            nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="https://tam-mee-tam-koet.pages.dev/#" class="logo">สวนตามมีตามเกิด</a>
+        <div>Menu</div>
+    </nav>
+
+    <header>
+        <h1 class="thai-title">สวนตามมีตามเกิด</h1>
+        <div class="sub-title">TAM-MEE-TAM-KERD-GARDEN</div>
+        <p>Simple life, real happiness.</p>
+    </header>
+    
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <span class="about-tag">About us</span>
+                <h2 class="about-title">Weaving the "As It Is" Life.</h2>
+                <p>
+                    In Thai, the phrase <strong>"ตามมีตามเกิด" (Tam Mee Tam Gerd)</strong><br>
+                    literally means "to live according to what you have, as it happens."
+                </p>
+                <p>
+                    It is not about giving up. Rather, it is an ancient Thai wisdom of living—an embrace of our current environment and the abundance already surrounding us with a heart of gratitude.
+                </p>
+                <p>
+                    Stop counting what is missing, and instead, feel the sunlight filtering through the trees, the breeze passing by, and the smiles of those beside you.
+                </p>
+                <p>
+                    We invite you to experience a way of life that creates "space for the soul."
+                </p>
+            </div>
+            <div class="about-decoration"></div>
+        </div>
+    </section>
+    
+    <section id="services">
+	
+		<div id="videoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
+		  <div style="position:relative; width:80%; max-width:800px;">
+			<span onclick="closeModal()" style="position:absolute; top:-40px; right:0; color:white; font-size:30px; cursor:pointer;">&times; 閉じる</span>
+			
+			<video id="localVideo" width="100%" controls>
+			  <source id="videoSource" src="" type="video/mp4">
+			  お使いのブラウザはビデオをサポートしていません。
+			</video>
+		  </div>
+		</div>	
+	
+        <h2 class="section-title">Experience</h2>
+        <div class="services-grid">
+            <div class="card">
+                <div class="card-image">
+                    <img src="./img/tour.png" style="width: 70%;" alt="Tour">
+                </div>
+                <div class="card-content">
+                    <h3>Tour</h3>
+                    <p>Welcome to ตามมีตามเกิด Tour, where every journey flows naturally. We offer authentic local experiences, peaceful nature, and unforgettable moments beyond typical tourism.</p>
+                    <a href="https://tam-mee-tam-koet.pages.dev/#" class="btn">Explore More</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="./img/workshop.png" style="width: 80%;" alt="Workshop">
+                </div>
+                <div class="card-content">
+                    <h3>Workshop</h3>
+                    <p>Welcome to ตามมีตามเกิด Workshop, where you can learn, create, and connect with local culture. Experience traditional crafts, organic farming, and mindful living in a natural setting.</p>
+                    <a href="javascript:void(0);"  class="btn"
+					onclick="openModal('videos/rnF8WtjD8EmYxFOkfel-01E0izHQIYN0HVYl9jofJqA.mp4')">
+					Explore More
+					</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="./img/farm.png" style="width: 80%;" alt="Farm">
+                </div>
+                <div class="card-content">
+                    <h3>Farm</h3>
+                    <p>Welcome to ตามมีตามเกิด Farm, a place where life flows naturally. Here, you can relax, breathe fresh air, enjoy organic food, and rediscover the simple beauty of nature.</p>
+                    <a href="https://tam-mee-tam-koet.pages.dev/#" class="btn">Visit Farm</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 TAM-MEE-TAM-KERD-GARDEN. <br>Stay Simple, Stay Natural.</p>
+    </footer>
+
+	<script>
+	const modal = document.getElementById('videoModal');
+	const video = document.getElementById('localVideo');
+	const source = document.getElementById('videoSource');
+
+	function openModal(filePath) {
+	  // 動画のパスをセット
+	  source.src = filePath;
+	  video.load(); // ソースを読み込み直す
+	  
+	  // モーダルを表示
+	  modal.style.display = 'flex';
+	  
+	  // 再生開始
+	  video.play();
+	}
+
+	function closeModal() {
+	  // モーダルを非表示に
+	  modal.style.display = 'none';
+	  
+	  // 動画を一時停止して時間をリセット（音が鳴り続けるのを防ぐ）
+	  video.pause();
+	  video.currentTime = 0;
+	}
+
+	// モーダルの外側をクリックしても閉じるようにする場合
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		closeModal();
+	  }
+	}
+	</script>
+
+</body></html>
